@@ -59,6 +59,11 @@ android {
     }
 }
 
+base {
+    archivesName.set("CarPlay")
+}
+
+
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(project(":common"))
@@ -114,8 +119,26 @@ val verifyStandaloneAuthentication by tasks.registering {
     }
 }
 tasks.named("preBuild") { mustRunAfter(verifyStandaloneAuthentication) }
-tasks.register("assembleStandaloneDebug") {
-    group = "build"
-    description = "Build a standalone car-test APK with explicitly provisioned authentication."
-    dependsOn(verifyStandaloneAuthentication, "assembleDebug")
+abstract class CopyCarPlayApkTask : DefaultTask() {
+    @get:InputFile
+    abstract val inputFile: RegularFileProperty
+
+    @get:OutputFile
+    abstract val outputFile: RegularFileProperty
+
+    @TaskAction
+    fun copy() {
+        inputFile.get().asFile.copyTo(outputFile.get().asFile, overwrite = true)
+    }
 }
+
+val copyCarPlayApk = tasks.register<CopyCarPlayApkTask>("copyCarPlayApk") {
+    dependsOn("packageDebug")
+    inputFile.set(layout.buildDirectory.file("outputs/apk/debug/CarPlay-debug.apk"))
+    outputFile.set(layout.buildDirectory.file("outputs/apk/debug/CarPlay.apk"))
+}
+
+
+
+
+

@@ -4,12 +4,15 @@ import android.content.Context
 
 /** Which features the setup guide offers for each DiLink generation, and how well each is proven. */
 object SetupGuide {
+    const val STEP_CONNECTION = 0
+    const val STEP_IPHONE = 1
+    const val STEP_CALIBRATION = 2
+    const val STEP_DONE = 3
+    const val STEP_COUNT = 4
+
+    // Aliases to preserve backward compatibility
     const val STEP_CAR = 0
-    const val STEP_CONNECTION = 1
-    const val STEP_IPHONE = 2
-    const val STEP_FEATURES = 3
-    const val STEP_DONE = 4
-    const val STEP_COUNT = 5
+    const val STEP_FEATURES = 2
 
     enum class Feature { AUTO_CONNECT, LOCATION, CLUSTER_MAP, BYD_NAVIGATION, CALLS_ON_DASHBOARD, CALL_KEYS, DILINK4_ADB_CLUSTER }
 

@@ -1,6 +1,8 @@
 package com.shilapi.xcertplay
 
+import android.app.Activity
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Build
 import com.shilapi.xcertplay.airplay.AirPlayDisplaySettings
 import com.shilapi.xcertplay.airplay.AirPlayPhysicalSizeBasis
@@ -113,8 +115,8 @@ object AirPlayPersistence {
     private const val SAFE_AREA_KEY_PREFIX = "safe_area_"
     private const val CUSTOM_ICON_FILE = "airplay-icon.png"
 
-    const val DEFAULT_MANUFACTURER = "DiPlay"
-    const val DEFAULT_MODEL = "DiPlay"
+    const val DEFAULT_MANUFACTURER = "CarPlay"
+    const val DEFAULT_MODEL = "CarPlay"
     const val DEFAULT_OEM_LABEL = "CarPlay"
     const val DEFAULT_MFI_I2C_PATH = "/dev/i2c-1"
 
@@ -139,6 +141,34 @@ object AirPlayPersistence {
                 percent.coerceIn(CarPlayDisplayScale.MIN_PERCENT, CarPlayDisplayScale.MAX_PERCENT),
             ).apply()
     }
+    private const val KEY_APP_ORIENTATION = "app_orientation"
+
+    /** Screen orientation lock options so vehicle movements do not tilt the display. */
+    enum class AppOrientation(val id: String, val activityOrientation: Int) {
+        AUTO("auto", ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED),
+        LANDSCAPE("landscape", ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE),
+        REVERSE_LANDSCAPE("reverse_landscape", ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE),
+        SENSOR_LANDSCAPE("sensor_landscape", ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE),
+        PORTRAIT("portrait", ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    fun loadAppOrientation(context: Context): AppOrientation {
+        val key = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            .getString(KEY_APP_ORIENTATION, AppOrientation.AUTO.id)
+        return AppOrientation.entries.firstOrNull { it.id == key } ?: AppOrientation.AUTO
+    }
+
+    fun saveAppOrientation(context: Context, orientation: AppOrientation) {
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+            .putString(KEY_APP_ORIENTATION, orientation.id).apply()
+    }
+
+    fun applyAppOrientation(activity: Activity) {
+        runCatching {
+            activity.requestedOrientation = loadAppOrientation(activity).activityOrientation
+        }
+    }
+
     /** Applied by the CarPlay host so overlay position/size updates without reconnecting. */
     @Volatile var overlaySettingsListener: (() -> Unit)? = null
 

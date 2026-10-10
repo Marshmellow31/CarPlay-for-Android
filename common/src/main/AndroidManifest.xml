@@ -67,7 +67,7 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:resizeableActivity="true"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="unspecified"
             android:theme="@style/Theme.Xcertplay"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

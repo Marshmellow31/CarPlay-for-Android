@@ -7,7 +7,7 @@
 
 **Turn any Android phone, tablet, or secondary device into a dedicated, standalone Apple CarPlay display.**
 
-[⬇️ **Download Latest APK (v1.1.0)**](https://github.com/Marshmellow31/CarPlay-for-Android/releases/latest/download/CarPlay-1.1.0.apk) · [All Releases](https://github.com/Marshmellow31/CarPlay-for-Android/releases)
+[⬇️ **Download Latest APK (v1.2.0)**](https://github.com/Marshmellow31/CarPlay-for-Android/releases/latest/download/CarPlay-1.2.0.apk) · [All Releases](https://github.com/Marshmellow31/CarPlay-for-Android/releases)
 
 Supports both **Wired (USB)** and **Wireless (Wi-Fi / Hotspot)** CarPlay with zero dongles, no cloud accounts, and no jailbreak required. Calibrated specifically for high-density Android phone and tablet screens so icons, text, and touch buttons are large, sharp, and easy to use daily.
 
@@ -54,8 +54,12 @@ When you install those apps on an Android phone (typically 5.5–6.7 inches with
 - **Customizable Video Engine**:
   - Smooth 60 FPS hardware-accelerated H.264 decoding.
   - Adjustable resolution scaling (30% to 160%) for optimal balance of sharpness and low battery draw.
-- **Brand Agnostic**:
-  - Default OEM home icon labeled `CarPlay` (no car-brand lock-in).
+- **Authentic Apple CarPlay Branding & Icon**:
+  - Genuine Apple CarPlay vector iconography and launcher icons.
+  - Complete removal of third-party head unit branding across all screens and locales.
+- **Adaptive Screen Orientation & Rotation Lock**:
+  - Defaults to **Auto (sensor)**, naturally supporting phones held vertically in portrait as well as landscape vehicle mounts.
+  - Fine-grained orientation locking in **Settings → Display** (Landscape locked, Reverse Landscape locked, Sensor Landscape, Portrait locked, Auto sensor).
 
 ---
 
@@ -107,18 +111,18 @@ Clone the repository and build the main application:
 git clone https://github.com/Marshmellow31/CarPlay-for-Android.git
 cd CarPlay-for-Android
 
-# Build debug APK
-./gradlew :mobile:assembleDebug
+# Build CarPlay APK
+./gradlew :mobile:assembleDebug copyCarPlayApk
 ```
 
 The resulting APK will be generated at:
 ```
-mobile/build/outputs/apk/debug/mobile-debug.apk
+mobile/build/outputs/apk/debug/CarPlay.apk
 ```
 
 To install directly to a connected device via ADB:
 ```bash
-adb install -r mobile/build/outputs/apk/debug/mobile-debug.apk
+adb install -r mobile/build/outputs/apk/debug/CarPlay.apk
 ```
 
 ---
