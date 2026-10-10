@@ -1,11 +1,13 @@
 # CarPlay for Android
 
+[![Latest Release](https://img.shields.io/github/v/release/Marshmellow31/CarPlay-for-Android?color=blue)](https://github.com/Marshmellow31/CarPlay-for-Android/releases)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Android](https://img.shields.io/badge/Android-7.1%2B%20(API%2025%2B)-brightgreen.svg)](https://developer.android.com)
 [![iOS](https://img.shields.io/badge/iOS-12.0%2B-black.svg)](https://apple.com)
-[![Platform](https://img.shields.io/badge/Platform-Phone%20%7C%20Tablet%20%7C%20Head%20Unit-orange.svg)](#)
 
 **Turn any Android phone, tablet, or secondary device into a dedicated, standalone Apple CarPlay display.**
+
+[⬇️ **Download Latest APK (v1.1.0)**](https://github.com/Marshmellow31/CarPlay-for-Android/releases/latest/download/CarPlay-1.1.0.apk) · [All Releases](https://github.com/Marshmellow31/CarPlay-for-Android/releases)
 
 Supports both **Wired (USB)** and **Wireless (Wi-Fi / Hotspot)** CarPlay with zero dongles, no cloud accounts, and no jailbreak required. Calibrated specifically for high-density Android phone and tablet screens so icons, text, and touch buttons are large, sharp, and easy to use daily.
 
