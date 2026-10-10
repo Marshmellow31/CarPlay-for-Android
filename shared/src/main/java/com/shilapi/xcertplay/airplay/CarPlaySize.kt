@@ -5,12 +5,12 @@ package com.shilapi.xcertplay.airplay
  * is expressed as the physical screen width reported to the iPhone: a wider screen gets smaller controls.
  */
 enum class CarPlaySize(val label: String, val widthMillimeters: Int) {
-    LARGE("Large", 250),
-    MEDIUM("Medium", 300),
-    SMALL("Small", 350);
+    LARGE("Large", 120),
+    MEDIUM("Medium", 145),
+    SMALL("Small", 180);
 
     companion object {
-        val DEFAULT = MEDIUM
+        val DEFAULT = LARGE
 
         /** Maps any stored width, including values from older builds, to the nearest preset. */
         fun fromWidthMillimeters(millimeters: Int): CarPlaySize =

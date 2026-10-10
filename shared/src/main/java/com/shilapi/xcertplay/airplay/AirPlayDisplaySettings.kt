@@ -17,10 +17,10 @@ object AirPlayDisplaySettings {
     const val FPS_STEP = 5
     const val DEFAULT_FPS = MAX_FPS
 
-    const val MIN_WIDTH_PHYSICAL_MM = 100
-    const val MAX_WIDTH_PHYSICAL_MM = 400
-    const val WIDTH_PHYSICAL_MM_STEP = 50
-    const val DEFAULT_WIDTH_PHYSICAL_MM = 200
+    const val MIN_WIDTH_PHYSICAL_MM = 80
+    const val MAX_WIDTH_PHYSICAL_MM = 350
+    const val WIDTH_PHYSICAL_MM_STEP = 5
+    const val DEFAULT_WIDTH_PHYSICAL_MM = 120
     val DEFAULT_PHYSICAL_SIZE_BASIS = AirPlayPhysicalSizeBasis.WIDTH
     const val MIN_REPORTED_PHYSICAL_MM = 1
     const val MAX_REPORTED_PHYSICAL_MM = 2_000

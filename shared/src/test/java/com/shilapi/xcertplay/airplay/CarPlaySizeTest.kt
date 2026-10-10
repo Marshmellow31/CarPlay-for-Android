@@ -11,8 +11,8 @@ class CarPlaySizeTest {
 
     @Test
     fun `older widths snap to the nearest preset`() {
-        assertEquals(CarPlaySize.LARGE, CarPlaySize.fromWidthMillimeters(200))
-        assertEquals(CarPlaySize.SMALL, CarPlaySize.fromWidthMillimeters(400))
+        assertEquals(CarPlaySize.LARGE, CarPlaySize.fromWidthMillimeters(100))
+        assertEquals(CarPlaySize.SMALL, CarPlaySize.fromWidthMillimeters(300))
     }
 
     @Test

@@ -6,6 +6,7 @@ plugins {
 // Optional local-only input. CI and ordinary source builds contain no accessory identity.
 val localAuthenticationAssets = providers.environmentVariable("DIPLAY_AUTH_ASSETS_DIR")
     .orNull?.let { file(it).canonicalFile }
+    ?: rootProject.file(".private/runtime-assets").takeIf { it.isDirectory }
 
 android {
     namespace = "com.shilapi.xcertplay"
